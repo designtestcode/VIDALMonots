@@ -1,0 +1,21 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" class="page" loaded="loadedHandler" navigatingTo="navigatingToHandler">
+    <!--
+    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
+    http://docs.nativescript.org/ui/action-bar
+    -->
+    <Page.actionBar>
+        <ActionBar title="VIDAL Mobile" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <ListView items="{{ news }}" itemTap="tapHandler">
+        <ListView.itemTemplate>
+            <FlexboxLayout  height="100">
+                <Image src="{{ images[0].url_image }}" height="100" width="200"/>
+                <FlexboxLayout  height="100" flexDirection="column" padding="10">
+                    <Label text="{{ title_news }}" textWrap="true"/>
+                    <label text="{{ publication_date_news }}" className="date"/>
+                </FlexboxLayout>
+            </FlexboxLayout>
+        </ListView.itemTemplate>
+    </ListView>
+</Page>

@@ -1,0 +1,29 @@
+<Page class="page" navigatingTo="onNavigatingTo" loaded="onLoaded" xmlns="http://www.nativescript.org/tns.xsd">
+    
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="VIDAL Mobile"></Label>
+    </ActionBar>
+
+    <StackLayout class="page">
+        <SearchBar hint="Rechercher" text="" loaded="loadSearchBar" textChange="onTextChanged" submit="onSubmit" clear="onClear"
+                   color="white" textFieldBackgroundColor="red" textFieldHintColor="white"></SearchBar>
+
+        <SegmentedBar>
+            <SegmentedBar.items>
+                <SegmentedBarItem title="Nom" />
+                <SegmentedBarItem title="Substance" />
+                <SegmentedBarItem title="Indication" />
+                <SegmentedBarItem title="Laboratoire" />
+
+            </SegmentedBar.items>
+        </SegmentedBar>
+        <ListView items="{{ products }}" itemTap="tapHandler" >
+            <ListView.itemTemplate>
+
+                        <Label text="{{ name }}" textWrap="true"/>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
+
+</Page>
+

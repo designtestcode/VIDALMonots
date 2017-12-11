@@ -1,0 +1,17 @@
+<Page class="page" navigatingTo="onNavigatingTo" loaded="onLoaded" xmlns="http://www.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="VIDAL Mobile"></Label>
+    </ActionBar>
+
+    <StackLayout class="page">
+        <ListView items="{{ menu }}" itemTap="OnTapHandler" >
+            <ListView.itemTemplate>
+
+                <Label text="{{ name }}" textWrap="true"/>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
+
+</Page>
+

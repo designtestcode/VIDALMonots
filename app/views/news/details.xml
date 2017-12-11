@@ -1,0 +1,10 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" class="page" loaded="loadedHandler" navigatingTo="navigatingToHandler">
+    <ScrollView>
+        <FlexboxLayout flexDirection="column">
+            <HtmlView html="{{ title_news }}"/>
+            <HtmlView html="{{ resume_news }}"/>
+            <Image src="{{ images[0].url_image }}"/>
+            <HtmlView html="{{ content_news }}"/>
+        </FlexboxLayout>
+    </ScrollView>
+</Page>
