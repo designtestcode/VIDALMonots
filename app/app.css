@@ -5,16 +5,60 @@ http://docs.nativescript.org/ui/styling for a full list of the CSS
 selectors and properties you can use to style UI components.
 
 /*
-For example, the following CSS rule changes the font size of all UI
-components that have the btn class name.
-*/
-.btn {
-    font-size: 18;
-}
-
-/*
 In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
+The imported CSS rules must precede all other types of rules.
 */
 @import 'nativescript-theme-core/css/core.light.css';
+
+ActionBar{background-color:#b20740;color:#fff;}
+
+ActivityIndicator{color:#cc0033;}
+
+.title{
+    font-size:18;color:#222;
+}
+
+.date{
+    color:#888;font-style:italic;text-align:right;
+}
+
+.type{
+    color:#cc0033;font-style:italic;
+}
+
+Page.listing ListView Image{
+    opacity:0;
+}
+
+Page.details{
+    background-color:#eeeeee;
+}
+
+Page.details FlexboxLayout GridLayout{
+    background-color:#fff;
+    padding:10 15;
+    margin: 10 0;
+}
+
+Page.details GridLayout .title{
+    font-weight:bold;
+    margin-bottom:5;
+}
+
+Page.details FlexboxLayout.content{
+    background-color:#fff;
+    padding:10 15;
+    margin:10 0;
+}
+
+
+Page.details FlexboxLayout.content Image{
+    margin:5 0;
+}
+
+SegmentedBar{
+    font-size: 11;
+    }
+  

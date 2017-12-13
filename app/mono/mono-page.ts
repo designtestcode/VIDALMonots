@@ -8,6 +8,9 @@ var config = require('../shared/config');
 var http = require('http');
 var frame = require("ui/frame");
 import { SearchBar } from "ui/search-bar";
+import * as dialogs from "ui/dialogs";
+
+import * as segmentedBarModule from "tns-core-modules/ui/segmented-bar";
 
 var fs = require('file-system');
 var Sqlite = require("nativescript-sqlite");
@@ -17,7 +20,7 @@ let dbName = "vidalmono.sqlite";
 
 var result = new Array();
 
-
+var segmentIndex = 0;
 
 class NewsListViewModel extends observableModule.Observable{}
 
@@ -42,12 +45,30 @@ export function onClear(args)   {
 }
 
 export function onSubmit(args)   {
+
+    if(segmentIndex > 0)   {
+        dialogs.action("Non supporté", "Annuler", []).then(result => {
+            model.set("products", "");          
+            return;
+        });
+    }
+
     let searchBar = <SearchBar>args.object;
     searchBar.dismissSoftInput();
-    searchProductLike(searchBar.text);
+
+    if(segmentIndex === 0 )
+        searchProductLike(searchBar.text);
 }
 
 export function loadSearchBar(args){
+
+    if(segmentIndex > 0)   {
+        dialogs.action("Non supporté", "Annuler", []).then(result => {
+            model.set("products", "");            
+            return;
+        });
+    }
+
     var searchBar:SearchBar = <SearchBar>args.object;
 
     searchBar.on("textChange", function(args){
@@ -55,8 +76,15 @@ export function loadSearchBar(args){
         if( !text || text.length == 0 ) {
             return;
         }
+        if(segmentIndex > 0)   {
+            dialogs.action("Non supporté", "Annuler", []).then(result => {
+                model.set("products", "");          
+                return;
+            });
+        }
 
-        searchProductLike(text);
+        if(segmentIndex === 0 )
+            searchProductLike(text);
     })
 }
 
@@ -114,4 +142,16 @@ function _searchProductLike(text: String)    {
     database.all(sql).then( data => {
         model.set('products', data);
     }); //db.all(sql).then( data =>
+}
+
+export function segmentedBarIndexChanged(args) {
+    //segmentedBar = <SegmentedBar>args.oject;
+//    console.log("Tab selected: " + args.newIndex + ", old one is:" + args.oldIndex);
+    segmentIndex = args.newIndex;
+    if(segmentIndex > 0)   {
+        dialogs.action("Non supporté", "Annuler", []).then(result => {
+            model.set("products", "");
+            
+        });
+    }
 }

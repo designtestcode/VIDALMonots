@@ -1,10 +1,20 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" class="page" loaded="loadedHandler" navigatingTo="navigatingToHandler">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" class="details" loaded="loadedHandler" navigatingTo="navigatingToHandler">
+    <Page.actionBar>
+        <ActionBar title="" icon="res://icon" android.iconVisibility="always">
+        </ActionBar>
+    </Page.actionBar>
     <ScrollView>
         <FlexboxLayout flexDirection="column">
-            <HtmlView html="{{ title_news }}"/>
-            <HtmlView html="{{ resume_news }}"/>
+            <GridLayout rows="auto, 30" columns="*, *">
+                <Label text="{{ decoded_title }}" class="title" textWrap="true" row="0" col="0" colSpan="2"/>
+                <Label text="{{ 'Par ' + author.name_user + ' ' + author.firstname_user}} " row="1" col="0" class="author"/>
+                <Label text="{{ 'Le ' + formated_date }}" row="1" col="1" class="date"/>
+            </GridLayout>
+            <FlexboxLayout flexDirection="column" class="content">
+                <HtmlView html="{{ summary_news }}"/>
             <Image src="{{ images[0].url_image }}"/>
             <HtmlView html="{{ content_news }}"/>
+        </FlexboxLayout>
         </FlexboxLayout>
     </ScrollView>
 </Page>

@@ -7,6 +7,8 @@ purpose of the file is to pass control to the app’s first module.
 import "./bundle-config";
 import * as app from 'application';
 
+app.setCssFileName("app.css");
+
 app.start({ moduleName: "menu/menu" });
 //app.start({ moduleName: "mono/mono-page" });
 //app.start({ moduleName: "views/news/list" });
